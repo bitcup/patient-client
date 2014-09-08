@@ -1,0 +1,27 @@
+<ion-view title="Practitioners">
+
+    <ion-content>
+        <div ng-hide="practitioners.length" class="padding">
+            You don't have any practitioners.  You can add practitioners to your <a href="#/tab/cares">care events</a>.
+        </div>
+
+        <!--todo: search-->
+
+        <div class="list">
+            <div class="item" ng-repeat="p in practitioners">
+                <h2>{{p.name}}</h2>
+                <h3>{{p.specialty}} at {{p.care.facilityName}}</h3>
+                <h3>{{p.care.start | date:'mediumDate'}} to {{ (p.care.end | date:'mediumDate') || 'Present'}}</h3>
+
+                <h3 ng-if="p.phone">
+                    {{p.phone}}
+                </h3>
+                <h3 ng-if="p.email">
+                    {{p.email}}
+                </h3>
+
+            </div>
+        </div>
+    </ion-content>
+
+</ion-view>

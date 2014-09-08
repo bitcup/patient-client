@@ -1,0 +1,34 @@
+<ion-view title="{{ practitioner.name }}">
+
+    <ion-nav-buttons side="right">
+        <button class="button button-clear" ng-click="openNoteModal()">
+            Add
+        </button>
+    </ion-nav-buttons>
+
+    <ion-content>
+        <div class="padding">
+            <h4>Notes for {{ practitioner.name }}</h4>
+            <h5>{{ practitioner.specialty }} at {{ care.facilityName}}</h5>
+            <h5>{{care.start | date:'mediumDate'}} to {{ (care.end | date:'mediumDate') || 'Present'}}</h5>
+            <h5>{{care.reason}}</h5>
+        </div>
+
+        <div ng-hide="notes.length" class="card">
+            <div class="item item-text-wrap item-icon-left">
+                <i class="icon ion-ios7-information-outline"></i>
+                <p>You don't have any notes.</p>
+                <p>You can add a new note by clicking the Add button above.</p>
+            </div>
+        </div>
+
+        <div class="list">
+            <a class="item item-icon-left" ng-repeat="n in notes" href="#/tab/note-details/{{n.id}}/{{practitioner.id}}/{{care.id}}">
+                <i class="icon ion-ios7-compose-outline"></i>
+                <h2>{{ (n.date | date:'mediumDate') }}</h2>
+                <h3>{{ n.content }}</h3>
+            </a>
+        </div>
+    </ion-content>
+</ion-view>
+

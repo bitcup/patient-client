@@ -1,0 +1,41 @@
+<div class="modal">
+    <form name="careForm">
+
+        <ion-content>
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">Facility</span>
+                    <input type="text" ng-model="care.facilityName" required>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Location</span>
+                    <input type="text" ng-model="care.location">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">From</span>
+                    <input type="date" ng-model="care.start" required>
+                </label>
+                <!--todo: add overnight stay - if yes, then show end date -->
+                <label class="item item-input">
+                    <span class="input-label">To</span>
+                    <input type="date" ng-model="care.end">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Reason</span>
+                    <input type="text" ng-model="care.reason" required>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Notes</span>
+                    <textarea rows="6" cols="5" ng-model="care.note"></textarea>
+                </label>
+            </div>
+        </ion-content>
+
+        <ion-header-bar class="bar-secondary">
+            <button class="button button-clear" ng-click="closeCareModal()">Cancel</button>
+            <h1 class="title">{{ care.facilityName || 'New Care' }}</h1>
+            <button ng-disabled="!careForm.$valid" class="button button-clear" ng-click="saveCare()">Save</button>
+        </ion-header-bar>
+
+    </form>
+</div>

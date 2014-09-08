@@ -1,0 +1,32 @@
+<ion-view title="Note on {{ note.date | date:'mediumDate' }}">
+
+    <ion-nav-buttons side="right">
+        <button class="button button-clear" ng-click="openNoteModal()">
+            Edit
+        </button>
+    </ion-nav-buttons>
+
+    <ion-content>
+        <div class="padding-horizontal padding-top">
+            <h4>Note on {{ note.date | date:'mediumDate' }}</h4>
+            <h5>{{ practitioner.name }}</h5>
+            <h5>{{ practitioner.specialty }} at {{ practitioner.care.facilityName}}</h5>
+            <h5>{{ practitioner.care.start | date:'mediumDate'}} to {{ (practitioner.care.end | date:'mediumDate') || 'Present'}}</h5>
+            <h5>{{ practitioner.care.reason}}</h5>
+        </div>
+
+        <div class="padding">
+            <button ng-if="note.id" class="button button-block button-assertive" ng-click="deleteNote()">
+                Delete this Note
+            </button>
+        </div>
+
+        <div class="card">
+            <div class="item item-text-wrap">
+                {{note.content}}
+            </div>
+        </div>
+    </ion-content>
+
+</ion-view>
+

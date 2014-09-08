@@ -1,0 +1,35 @@
+<ion-view title="{{ care.facilityName }}">
+
+    <ion-nav-buttons side="right">
+        <button class="button button-clear" ng-click="openCareModal()">
+            Edit
+        </button>
+    </ion-nav-buttons>
+
+    <ion-content>
+        <div class="padding">
+            <h4>{{care.facilityName}}<span ng-if="care.location"> in {{care.location}}</span></h4>
+            <h5>{{care.start | date:'mediumDate'}} to {{ (care.end | date:'mediumDate') || 'Present'}}</h5>
+            <h5>{{care.reason}}</h5>
+            <div ng-show="care.note">
+                {{care.note}}
+            </div>
+        </div>
+
+        <div class="padding">
+            <button ng-if="care.id" class="button button-block button-assertive" ng-click="deleteCare()">
+                Delete this Care
+            </button>
+        </div>
+
+        <div class="list">
+            <a class="item item-icon-left" href="#/tab/care-practitioners/{{care.id}}">
+                <i class="icon ion-ios7-person-outline"></i>
+                Practitioners
+                <span class="badge badge-positive">{{practitioners.length}}</span>
+            </a>
+        </div>
+    </ion-content>
+
+</ion-view>
+

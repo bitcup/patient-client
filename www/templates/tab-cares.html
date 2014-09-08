@@ -1,0 +1,34 @@
+<ion-view title="Care">
+
+    <!--<div>-->
+        <!--{{ cares | json }}-->
+    <!--</div>-->
+
+    <ion-nav-buttons side="right">
+        <button class="button button-clear" ng-click="openCareModal()">
+            Add
+        </button>
+    </ion-nav-buttons>
+
+    <ion-content>
+
+        <div ng-hide="cares.length" class="card">
+            <div class="item item-text-wrap item-icon-left">
+                <i class="icon ion-ios7-information-outline"></i>
+                <p>You don't have any care events.</p>
+                <p>You can add a new care by clicking the Add button above.</p>
+            </div>
+        </div>
+
+        <div class="list">
+            <a class="item item-icon-left" ng-repeat="c in cares" href="#/tab/care-details/{{c.id}}">
+                <i class="icon ion-ios7-medkit-outline"></i>
+                <h2 ng-show="c.location">{{c.facilityName}} in {{ c.location }}</h2>
+                <h2 ng-show="!c.location">{{c.facilityName}}</h2>
+                <h3>{{c.start | date:'mediumDate'}} to {{ (c.end | date:'mediumDate') || 'Present'}}</h3>
+                <h3>{{c.reason}}</h3>
+            </a>
+        </div>
+    </ion-content>
+</ion-view>
+

@@ -1,0 +1,35 @@
+<ion-view title="{{ care.facilityName }}">
+
+    <ion-nav-buttons side="right">
+        <button class="button button-clear" ng-click="openPractitionerModal()">
+            Add
+        </button>
+    </ion-nav-buttons>
+
+    <ion-content>
+        <div class="padding">
+            <h4>Practitioners at {{ care.facilityName }}</h4>
+            <h5 ng-show="care.location">{{care.location}}</h5>
+            <h5>{{care.start | date:'mediumDate'}} to {{ (care.end | date:'mediumDate') || 'Present'}}</h5>
+            <h5>{{care.reason}}</h5>
+        </div>
+
+        <div ng-hide="practitioners.length" class="card">
+            <div class="item item-text-wrap item-icon-left">
+                <i class="icon ion-ios7-information-outline"></i>
+                <p>You don't have any practitioners at this care facility.</p>
+                <p>You can add a new practitioner by clicking the Add button above.</p>
+            </div>
+        </div>
+
+        <div class="list">
+            <a class="item item-icon-left" ng-repeat="p in practitioners" href="#/tab/practitioner-details/{{p.id}}/{{care.id}}">
+                <i class="icon ion-ios7-person-outline"></i>
+                <h2>{{p.name}}</h2>
+                <h3>{{p.specialty}}</h3>
+            </a>
+        </div>
+
+    </ion-content>
+</ion-view>
+

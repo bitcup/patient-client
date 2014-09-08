@@ -1,0 +1,47 @@
+<ion-view title="{{ practitioner.name }}">
+
+    <ion-nav-buttons side="right">
+        <button class="button button-clear" ng-click="openPractitionerModal()">
+            Edit
+        </button>
+    </ion-nav-buttons>
+
+    <ion-content>
+        <div class="padding">
+            <h4>{{practitioner.name}}</h4>
+            <h5>{{practitioner.specialty}} at {{ care.facilityName }}</h5>
+            <h5>{{care.start | date:'mediumDate'}} to {{ (care.end | date:'mediumDate') || 'Present'}}</h5>
+            <h5>{{care.reason}}</h5>
+            <div class="item item-button-right item-icon-left" ng-if="practitioner.phone">
+                <i class="icon ion-ios7-telephone-outline"></i>
+                {{practitioner.phone}}
+                <a class="button button-clear" href="tel:{{practitioner.phone}}">
+                    Call
+                </a>
+            </div>
+            <div class="item item-button-right item-icon-left" ng-if="practitioner.email">
+                <i class="icon ion-ios7-email-outline"></i>
+                {{practitioner.email}}
+                <a class="button button-clear" href="mailto:{{practitioner.email}}">
+                    Send
+                </a>
+            </div>
+        </div>
+
+        <div class="padding">
+            <button ng-if="practitioner.id" class="button button-block button-assertive" ng-click="deletePractitioner()">
+                Delete this Practitioner
+            </button>
+        </div>
+
+        <div class="list">
+            <a class="item item-icon-left" href="#/tab/practitioner-notes/{{practitioner.id}}/{{care.id}}">
+                <i class="icon ion-ios7-compose-outline"></i>
+                Notes
+                <span class="badge badge-positive">{{notes.length}}</span>
+            </a>
+        </div>
+    </ion-content>
+
+</ion-view>
+

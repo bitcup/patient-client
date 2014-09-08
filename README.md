@@ -1,0 +1,1 @@
+Client portion of patient app (works in conjunction with patient-api-server). 
